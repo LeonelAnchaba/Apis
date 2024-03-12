@@ -42,19 +42,18 @@ const moviesController = {
         }
         
     },
-    store:(req,res) => {
-        return res.json(req.body)
-        // try {
-        //     db.Movie.create(req.body)
-        //     .then((movie)=> {
-        //         return res.status(200).json({
-        //             status: 200,
-        //             data: movie
-        //         })})            
-        //     .catch(error => res.send(error))
-        // } catch (error) {
-        //     return res.status(404).send(error.message);
-        // }
+    store: (req, res) => {
+        try {
+            db.Movie.create(req.body)
+            .then((movie)=> {
+                return res.status(200).json({
+                    status: 200,
+                    data: movie
+                })})            
+            .catch(error => res.send(error))
+        } catch (error) {
+            return res.status(404).send(error.message);
+        }
         
         
     },
